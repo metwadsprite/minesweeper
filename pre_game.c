@@ -71,7 +71,7 @@ void set_board(int *board, int nr_bombs, int board_lines, int board_columns, int
                 }
                 board[(line_index + 1) * board_columns + col_index]++;
                 if (col_index < board_columns - 1) {
-                    board[(line_index + 1) * board_columns + col_index - 1]++;
+                    board[(line_index + 1) * board_columns + col_index + 1]++;
                 }
             }
         }
