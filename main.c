@@ -20,7 +20,7 @@ int main() {
     scanf("%d %d %d", &board_lines, &board_columns, &nr_bombs);
 
     board = calloc((size_t) board_lines * board_columns, sizeof(int));
-    is_revealed = calloc((size_t) (board_lines + 2) * board_columns, sizeof(int));
+    is_revealed = calloc((size_t) board_lines * board_columns, sizeof(int));
 
     if (nr_bombs > (board_lines * board_columns) - 4) {
         printf("Invalid board\n");
