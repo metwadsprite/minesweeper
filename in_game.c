@@ -22,23 +22,17 @@ void print_board(int *board, int *is_revealed, int board_lines, int board_column
         for (iterator2 = 0; iterator2 < board_columns; iterator2++) {
             position = iterator1 * board_columns + iterator2;
 
-            // "Hidden" board print
             if (is_revealed[position] == 1) {
-                if (board[position] == 10) {
+                if (board[position] >= 10) {
                     printf("B ");
+                } else if (board[position] == 0) {
+                    printf("  ");
                 } else {
                     printf("%d ", board[position]);
                 }
             } else {
                 printf("%c ", 'H');
             }
-
-            // Actual board print
-            //if (board[position] == 10) {
-            //    printf("B ");
-            //} else {
-            //    printf("%d ", board[position]);
-            //}
         }
 
         printf("\n");
@@ -53,6 +47,11 @@ int reveal(int *board, int *is_revealed, int board_lines, int board_columns, int
         return 0;
     }
 
+    /*
+     * Whenever the player opens a square with 0 bombs around it
+     * we use a recursive flood algorithm to open all the non-bombs
+     * squares around it.
+     */
     if (board[position] == 0) {
         is_revealed[position] = 1;
 
@@ -69,7 +68,7 @@ int reveal(int *board, int *is_revealed, int board_lines, int board_columns, int
             reveal(board, is_revealed, board_lines, board_columns, line, col + 1);
         }
 
-    } else if (board[position] == 10) {
+    } else if (board[position] >= 10) {
         printf("You hit a bomb!\n");
         is_revealed[position] = 1;
         return 1;
@@ -90,7 +89,7 @@ int win_check(int *board, int *is_revealed, int board_lines, int board_columns) 
         for (iterator2 = 0; iterator2 < board_columns; iterator2++) {
             position = iterator1 * board_columns + iterator2;
 
-            if (board[position] != 10 && is_revealed[position] == 0) {
+            if (board[position] < 10 && is_revealed[position] == 0) {
                 won = 0;
             }
         }

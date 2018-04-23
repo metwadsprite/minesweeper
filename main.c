@@ -22,7 +22,7 @@ int main() {
     board = calloc((size_t) board_lines * board_columns, sizeof(int));
     is_revealed = calloc((size_t) (board_lines + 2) * board_columns, sizeof(int));
 
-    if (nr_bombs >= (board_lines * board_columns) / 2) {
+    if (nr_bombs > (board_lines * board_columns) - 4) {
         printf("Invalid board\n");
         return 0;
     }
@@ -33,10 +33,14 @@ int main() {
     scanf("%d %d", &line, &col);
 
     while (line >= board_lines || col >= board_columns || line < 0 || col < 0) {
-        printf("Invalid coordinates\n");
+        printf("Invalid coordinates\nTry again:\n");
         scanf("%d %d", &line, &col);
     }
 
+    /*
+     * We generate the board after the first set of coordinates is given
+     * to prevent unsolvable boards.
+     */
     set_board(board, nr_bombs, board_lines, board_columns, line, col);
 
     bomb_hit = reveal(board, is_revealed, board_lines, board_columns, line, col);

@@ -18,6 +18,9 @@ void set_board(int *board, int nr_bombs, int board_lines, int board_columns, int
 
         position = line_index * board_columns + col_index;
 
+        /*
+         * We make sure not to place bombs next to the first opened case.
+         */
         if (start_col - 1 == col_index) {
             if (start_line - 1 == line_index) continue;
             else if (start_line == line_index) continue;
@@ -30,12 +33,16 @@ void set_board(int *board, int nr_bombs, int board_lines, int board_columns, int
             if (start_line - 1 == line_index) continue;
             else if (start_line == line_index) continue;
             else if (start_line + 1 == line_index) continue;
-        } else if (board[position] == 10) {
+        } else if (board[position] >= 10) {
             continue;
         } else {
             board[position] = 10;
             c_nr_bombs++;
 
+            /*
+             * After we place a bomb on a square we increase the value of
+             * every square around it by one.
+             */
             if (line_index > 0) {
                 if (col_index > 0) {
                     board[(line_index - 1) * board_columns + col_index - 1]++;
