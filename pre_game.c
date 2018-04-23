@@ -4,20 +4,6 @@
 #include <stdlib.h>
 #include <time.h>
 
-void hide_all(int *is_revealed, int board_lines, int board_columns) {
-    int iterator1;
-    int iterator2;
-    int position;
-
-    for (iterator1 = 0; iterator1 < board_lines; iterator1++) {
-        for (iterator2 = 0; iterator2 < board_columns; iterator2++) {
-            position = iterator1 * board_columns + iterator2;
-
-            is_revealed[position] = 0;
-        }
-    }
-}
-
 void set_board(int *board, int nr_bombs, int board_lines, int board_columns, int start_line, int start_col) {
     int line_index;
     int col_index;
@@ -71,7 +57,7 @@ void set_board(int *board, int nr_bombs, int board_lines, int board_columns, int
                 }
                 board[(line_index + 1) * board_columns + col_index]++;
                 if (col_index < board_columns - 1) {
-                    board[(line_index + 1) * board_columns + col_index - 1]++;
+                    board[(line_index + 1) * board_columns + col_index + 1]++;
                 }
             }
         }

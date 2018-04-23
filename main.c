@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <math.h>
 #include "headers/pre_game.h"
 #include "headers/in_game.h"
 
@@ -28,13 +27,12 @@ int main() {
         return 0;
     }
 
-    hide_all(is_revealed, board_lines, board_columns);
     print_board(board, is_revealed, board_lines, board_columns);
 
     printf("Give coordinates of square you want to open: \n");
     scanf("%d %d", &line, &col);
 
-    while (line > board_lines || col > board_columns) {
+    while (line >= board_lines || col >= board_columns || line < 0 || col < 0) {
         printf("Invalid coordinates\n");
         scanf("%d %d", &line, &col);
     }
@@ -62,10 +60,6 @@ int main() {
             break;
         }
     }
-
-    printf("Press any key to continue...\n");
-    getchar();
-    getchar();
 
     free(board);
     free(is_revealed);
