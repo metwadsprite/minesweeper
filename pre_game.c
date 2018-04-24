@@ -19,7 +19,8 @@ void set_board(int *board, int nr_bombs, int board_lines, int board_columns, int
         position = line_index * board_columns + col_index;
 
         /*
-         * We make sure not to place bombs next to the first opened case.
+         * We make sure not to place any bomb adjacent to the first
+         * opened square.
          */
         if (start_col - 1 == col_index) {
             if (start_line - 1 == line_index) continue;
