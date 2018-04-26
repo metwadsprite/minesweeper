@@ -1,11 +1,26 @@
-//
-// Created by vladv on 4/19/2018.
-//
+/**
+ * @file pre_game.c
+ * @brief C library containing the function that generate a randomized minesweeper board.
+ * @author Vasilescu Vlad
+ */
+
 #include <stdlib.h>
 #include <time.h>
 #include "headers/board.h"
 
 void set_board(struct minesweeper_board *board, int start_line, int start_col) {
+    /**
+     * @fn void set_board(struct minesweeper_board *board, int start_line, int start_col)
+     * @brief Function that takes as input an empty board and two starting coordinates
+     * and generates it such that no bomb is placed close to the starting position.
+     * @param *board The board and all it's details contained in a struct.
+     * @param start_line The line on which the starting position is located.
+     * @param start_col The column on which the starting position is located.
+     *
+     * The function firstly makes sure it doesn't place the bomb on or adjecent to the starting position,
+     * then places it and increases the value of every square around it by one.
+     */
+
     int line_index;
     int col_index;
     int c_nr_bombs = 0;
@@ -19,10 +34,6 @@ void set_board(struct minesweeper_board *board, int start_line, int start_col) {
 
         position = line_index * board->columns + col_index;
 
-        /*
-         * We make sure not to place any bomb adjacent to the first
-         * opened square.
-         */
         if (start_col - 1 == col_index) {
             if (start_line - 1 == line_index) continue;
             else if (start_line == line_index) continue;
@@ -41,10 +52,6 @@ void set_board(struct minesweeper_board *board, int start_line, int start_col) {
             board->base[position] = 10;
             c_nr_bombs++;
 
-            /*
-             * After we place a bomb on a square we increase the value of
-             * every square around it by one.
-             */
             if (line_index > 0) {
                 if (col_index > 0) {
                     board->base[(line_index - 1) * board->columns + col_index - 1]++;

@@ -1,6 +1,9 @@
-//
-// Created by vladv on 4/19/2018.
-//
+/**
+ * @file in_game.h
+ * @brief C library for actions used during the game.
+ *
+ * Implements printing the board and opening a square.
+ */
 
 #ifndef MINESWEEPER_IN_GAME_H
 #define MINESWEEPER_IN_GAME_H

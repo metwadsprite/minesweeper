@@ -1,11 +1,22 @@
-//
-// Created by vladv on 4/19/2018.
-//
+/**
+ * @file in_game.c
+ * @brief C library containing the functions used during gameplay.
+ * @author Vasilescu Vlad
+ */
+
 #include <stdio.h>
 #include <stdlib.h>
 #include "headers/board.h"
 
 void print_board(struct minesweeper_board *board){
+    /**
+     * @fn void print_board(struct minesweeper_board *board)
+     * @brief Prints the board to standard output.
+     * @param *board The board and all it's details contained in a struct.
+     *
+     * The function prints the board.
+     */
+
     int iterator1;
     int iterator2;
     int position;
@@ -40,6 +51,20 @@ void print_board(struct minesweeper_board *board){
 }
 
 int reveal(struct minesweeper_board *board, int line, int col) {
+    /**
+     * @fn int reveal(struct minesweeper_board *board, int line, int col)
+     * @brief Opens a square.
+     * @param *board The board and all it's details contained in a struct.
+     * @param line The line on which the square to be opened is located.
+     * @param col The column on which the square to be opened is located.
+     *
+     * The function opens the square on the given coordinates and returns a number
+     * based on what is underneath it:
+     * -If it finds nothing then it calls itself for all adjecant squares.
+     * -If it finds a number it returns a "0".
+     * -If it finds a bomb then it returns a "1" so that the program can terminate.
+     */
+
     int position;
     position = line * board->columns + col;
 
@@ -47,11 +72,6 @@ int reveal(struct minesweeper_board *board, int line, int col) {
         return 0;
     }
 
-    /*
-     * Whenever the player opens a square with 0 bombs around it
-     * we use a recursive flood algorithm to open all the non-bombs
-     * squares around it.
-     */
     if (board->base[position] == 0) {
         board->visibility[position] = 1;
         board->open_squares++;

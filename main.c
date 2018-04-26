@@ -1,10 +1,25 @@
+/**
+ * @file main.c
+ * @brief Main file where all the functions are called from.
+ *
+ * @author Vasilescu Vlad
+ *
+ * Generates a playable minesweeper board.
+ */
+
 #include <stdio.h>
 #include <stdlib.h>
 #include "headers/pre_game.h"
 #include "headers/in_game.h"
 #include "headers/board.h"
 
-int main() {
+int main(void) {
+    /**
+     * @fn int main(void)
+     * @brief Main function that takes user input for generating the board
+     * and playing the game.
+     */
+
     int line;
     int col;
 
@@ -13,8 +28,6 @@ int main() {
 
     board->open_squares = 0;
     board->bomb_hit = 0;
-
-
 
     printf("Give board height, length and nr. of bombs: \n");
     scanf("%d %d %d", &board->lines, &board->columns, &board->nr_bombs);
@@ -37,10 +50,6 @@ int main() {
         scanf("%d %d", &line, &col);
     }
 
-    /*
-     * We generate the board after the first set of coordinates is given
-     * to prevent unsolvable boards.
-     */
     set_board(board, line, col);
 
     board->bomb_hit = reveal(board, line, col);

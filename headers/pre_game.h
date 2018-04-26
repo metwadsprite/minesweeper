@@ -1,6 +1,10 @@
-//
-// Created by vladv on 4/19/2018.
-//
+/**
+ * @file pre_game.h
+ * @brief C library for actions performed before playing the game.
+ * @author Vasilescu Vlad.
+ *
+ * Generates the board.
+ */
 
 #ifndef MINESWEEPER_PRE_GAME_H
 #define MINESWEEPER_PRE_GAME_H
