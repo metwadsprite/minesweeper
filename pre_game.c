@@ -3,8 +3,9 @@
 //
 #include <stdlib.h>
 #include <time.h>
+#include "headers/board.h"
 
-void set_board(int *board, int nr_bombs, int board_lines, int board_columns, int start_line, int start_col) {
+void set_board(struct minesweeper_board *board, int start_line, int start_col) {
     int line_index;
     int col_index;
     int c_nr_bombs = 0;
@@ -12,11 +13,11 @@ void set_board(int *board, int nr_bombs, int board_lines, int board_columns, int
 
     srand((unsigned) time(NULL));
 
-    while (c_nr_bombs < nr_bombs) {
-        line_index = rand() % board_lines;
-        col_index = rand() % board_columns;
+    while (c_nr_bombs < board->nr_bombs) {
+        line_index = rand() % board->lines;
+        col_index = rand() % board->columns;
 
-        position = line_index * board_columns + col_index;
+        position = line_index * board->columns + col_index;
 
         /*
          * We make sure not to place any bomb adjacent to the first
@@ -34,10 +35,10 @@ void set_board(int *board, int nr_bombs, int board_lines, int board_columns, int
             if (start_line - 1 == line_index) continue;
             else if (start_line == line_index) continue;
             else if (start_line + 1 == line_index) continue;
-        } else if (board[position] >= 10) {
+        } else if (board->base[position] >= 10) {
             continue;
         } else {
-            board[position] = 10;
+            board->base[position] = 10;
             c_nr_bombs++;
 
             /*
@@ -46,26 +47,26 @@ void set_board(int *board, int nr_bombs, int board_lines, int board_columns, int
              */
             if (line_index > 0) {
                 if (col_index > 0) {
-                    board[(line_index - 1) * board_columns + col_index - 1]++;
+                    board->base[(line_index - 1) * board->columns + col_index - 1]++;
                 }
-                board[(line_index - 1) * board_columns + col_index]++;
-                if (col_index < board_columns - 1) {
-                    board[(line_index - 1) * board_columns + col_index + 1]++;
+                board->base[(line_index - 1) * board->columns + col_index]++;
+                if (col_index < board->columns - 1) {
+                    board->base[(line_index - 1) * board->columns + col_index + 1]++;
                 }
             }
             if (col_index > 0) {
-                board[(line_index) * board_columns + col_index - 1]++;
+                board->base[(line_index) * board->columns + col_index - 1]++;
             }
-            if (col_index < board_columns - 1) {
-                board[(line_index) * board_columns + col_index + 1]++;
+            if (col_index < board->columns - 1) {
+                board->base[(line_index) * board->columns + col_index + 1]++;
             }
-            if (line_index < board_lines - 1) {
+            if (line_index < board->lines - 1) {
                 if (col_index > 0) {
-                    board[(line_index + 1) * board_columns + col_index - 1]++;
+                    board->base[(line_index + 1) * board->columns + col_index - 1]++;
                 }
-                board[(line_index + 1) * board_columns + col_index]++;
-                if (col_index < board_columns - 1) {
-                    board[(line_index + 1) * board_columns + col_index + 1]++;
+                board->base[(line_index + 1) * board->columns + col_index]++;
+                if (col_index < board->columns - 1) {
+                    board->base[(line_index + 1) * board->columns + col_index + 1]++;
                 }
             }
         }

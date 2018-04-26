@@ -2,37 +2,37 @@
 #include <stdlib.h>
 #include "headers/pre_game.h"
 #include "headers/in_game.h"
+#include "headers/board.h"
 
 int main() {
-    int *board;
-    int *is_revealed;
-
-    int board_lines;
-    int board_columns;
-    int nr_bombs;
-
     int line;
     int col;
 
-    int bomb_hit = 0;
+    struct minesweeper_board *board;
+    board = malloc((size_t) sizeof(struct minesweeper_board));
+
+    board->open_squares = 0;
+    board->bomb_hit = 0;
+
+
 
     printf("Give board height, length and nr. of bombs: \n");
-    scanf("%d %d %d", &board_lines, &board_columns, &nr_bombs);
+    scanf("%d %d %d", &board->lines, &board->columns, &board->nr_bombs);
 
-    board = calloc((size_t) board_lines * board_columns, sizeof(int));
-    is_revealed = calloc((size_t) board_lines * board_columns, sizeof(int));
+    board->base = calloc((size_t) board->lines * board->columns, sizeof(int));
+    board->visibility = calloc((size_t) board->lines * board->columns, sizeof(int));
 
-    if (nr_bombs > (board_lines * board_columns) - 4) {
+    if (board->nr_bombs > (board->lines * board->columns) - 4) {
         printf("Invalid board\n");
         return 0;
     }
 
-    print_board(board, is_revealed, board_lines, board_columns);
+    print_board(board);
 
     printf("Give coordinates of square you want to open: \n");
     scanf("%d %d", &line, &col);
 
-    while (line >= board_lines || col >= board_columns || line < 0 || col < 0) {
+    while (line >= board->lines || col >= board->columns || line < 0 || col < 0) {
         printf("Invalid coordinates\nTry again:\n");
         scanf("%d %d", &line, &col);
     }
@@ -41,32 +41,35 @@ int main() {
      * We generate the board after the first set of coordinates is given
      * to prevent unsolvable boards.
      */
-    set_board(board, nr_bombs, board_lines, board_columns, line, col);
+    set_board(board, line, col);
 
-    bomb_hit = reveal(board, is_revealed, board_lines, board_columns, line, col);
+    board->bomb_hit = reveal(board, line, col);
 
-    print_board(board, is_revealed, board_lines, board_columns);
+    print_board(board);
 
-    if (win_check(board, is_revealed, board_lines, board_columns)) {
+    if (board->open_squares == board->lines * board->columns - board->nr_bombs) {
         printf("You won!\n");
         return 0;
     }
 
-    while(bomb_hit == 0) {
+    while(board->bomb_hit == 0) {
         printf("Give new set of coordinates:\n");
         scanf("%d %d", &line, &col);
 
-        bomb_hit = reveal(board, is_revealed, board_lines, board_columns, line, col);
-        print_board(board, is_revealed, board_lines, board_columns);
+        while (line >= board->lines || col >= board->columns || line < 0 || col < 0) {
+            printf("Invalid coordinates\nTry again:\n");
+            scanf("%d %d", &line, &col);
+        }
 
-        if (win_check(board, is_revealed, board_lines, board_columns)) {
+        board->bomb_hit = reveal(board, line, col);
+        print_board(board);
+
+        if (board->open_squares == board->lines * board->columns - board->nr_bombs) {
             printf("You won!\n");
             break;
         }
     }
 
     free(board);
-    free(is_revealed);
-
     return 0;
 }

@@ -3,32 +3,32 @@
 //
 #include <stdio.h>
 #include <stdlib.h>
-#include "headers/pre_game.h"
+#include "headers/board.h"
 
-void print_board(int *board, int *is_revealed, int board_lines, int board_columns){
+void print_board(struct minesweeper_board *board){
     int iterator1;
     int iterator2;
     int position;
 
     printf("   ");
-    for (iterator1 = 0; iterator1 < board_columns; iterator1++) {
+    for (iterator1 = 0; iterator1 < board->columns; iterator1++) {
         printf(" %d", iterator1);
     }
     printf("\n\n");
 
-    for (iterator1 = 0; iterator1 < board_lines; iterator1++) {
+    for (iterator1 = 0; iterator1 < board->lines; iterator1++) {
         printf("%d   ", iterator1);
 
-        for (iterator2 = 0; iterator2 < board_columns; iterator2++) {
-            position = iterator1 * board_columns + iterator2;
+        for (iterator2 = 0; iterator2 < board->columns; iterator2++) {
+            position = iterator1 * board->columns + iterator2;
 
-            if (is_revealed[position] == 1) {
-                if (board[position] >= 10) {
+            if (board->visibility[position] == 1) {
+                if (board->base[position] >= 10) {
                     printf("B ");
-                } else if (board[position] == 0) {
+                } else if (board->base[position] == 0) {
                     printf("  ");
                 } else {
-                    printf("%d ", board[position]);
+                    printf("%d ", board->base[position]);
                 }
             } else {
                 printf("%c ", 'H');
@@ -39,11 +39,11 @@ void print_board(int *board, int *is_revealed, int board_lines, int board_column
     }
 }
 
-int reveal(int *board, int *is_revealed, int board_lines, int board_columns, int line, int col) {
+int reveal(struct minesweeper_board *board, int line, int col) {
     int position;
-    position = line * board_columns + col;
+    position = line * board->columns + col;
 
-    if (is_revealed[position]) {
+    if (board->visibility[position]) {
         return 0;
     }
 
@@ -52,52 +52,30 @@ int reveal(int *board, int *is_revealed, int board_lines, int board_columns, int
      * we use a recursive flood algorithm to open all the non-bombs
      * squares around it.
      */
-    if (board[position] == 0) {
-        is_revealed[position] = 1;
+    if (board->base[position] == 0) {
+        board->visibility[position] = 1;
+        board->open_squares++;
 
         if (line > 0) {
-            reveal(board, is_revealed, board_lines, board_columns, line - 1, col);
+            reveal(board, line - 1, col);
         }
-        if (line < board_lines - 1) {
-            reveal(board, is_revealed, board_lines, board_columns, line + 1, col);
+        if (line < board->lines - 1) {
+            reveal(board, line + 1, col);
         }
         if (col > 0) {
-            reveal(board, is_revealed, board_lines, board_columns, line, col - 1);
+            reveal(board, line, col - 1);
         }
-        if (col < board_columns - 1) {
-            reveal(board, is_revealed, board_lines, board_columns, line, col + 1);
+        if (col < board->columns - 1) {
+            reveal(board, line, col + 1);
         }
 
-    } else if (board[position] >= 10) {
+    } else if (board->base[position] >= 10) {
         printf("You hit a bomb!\n");
-        is_revealed[position] = 1;
+        board->visibility[position] = 1;
         return 1;
     } else {
-        is_revealed[position] = 1;
-        return 0;
-    }
-}
-
-int win_check(int *board, int *is_revealed, int board_lines, int board_columns) {
-    int iterator1;
-    int iterator2;
-    int position;
-
-    int won = 1;
-
-    for (iterator1 = 0; iterator1 < board_lines; iterator1++) {
-        for (iterator2 = 0; iterator2 < board_columns; iterator2++) {
-            position = iterator1 * board_columns + iterator2;
-
-            if (board[position] < 10 && is_revealed[position] == 0) {
-                won = 0;
-            }
-        }
-    }
-
-    if (won) {
-        return 1;
-    } else {
+        board->visibility[position] = 1;
+        board->open_squares++;
         return 0;
     }
 }

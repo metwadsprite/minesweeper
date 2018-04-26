@@ -5,6 +5,6 @@
 #ifndef MINESWEEPER_PRE_GAME_H
 #define MINESWEEPER_PRE_GAME_H
 
-void set_board(int *board, int nr_bombs, int board_he, int board_le, int y_cd, int x_cd);
+void set_board(struct minesweeper_board *board, int start_line, int start_column);
 
 #endif //MINESWEEPER_PRE_GAME_H
