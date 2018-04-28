@@ -32,8 +32,13 @@ int main(void) {
     printf("Give board height, length and nr. of bombs: \n");
     scanf("%d %d %d", &board->lines, &board->columns, &board->nr_bombs);
 
-    board->base = calloc((size_t) board->lines * board->columns, sizeof(int));
-    board->visibility = calloc((size_t) board->lines * board->columns, sizeof(int));
+    board->base = (int **)calloc((size_t) board->lines, sizeof(int *));
+    board->visibility = (int **)calloc((size_t) board->lines, sizeof(int*));
+
+    for (int iterator = 0; iterator < board->lines; iterator++) {
+        board->base[iterator] = (int *)calloc((size_t) board->columns, sizeof(int));
+        board->visibility[iterator] = (int *)calloc((size_t) board->columns, sizeof(int));
+    }
 
     if (board->nr_bombs > (board->lines * board->columns) - 4) {
         printf("Invalid board\n");

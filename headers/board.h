@@ -23,9 +23,9 @@ struct minesweeper_board {
     int bomb_hit;
 
     /// The board itself.
-    int *base;
+    int **base;
     /// If a square has been opened or not.
-    int *visibility;
+    int **visibility;
 };
 
 #endif //MINESWEEPER_BOARD_H

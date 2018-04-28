@@ -19,7 +19,6 @@ void print_board(struct minesweeper_board *board){
 
     int iterator1;
     int iterator2;
-    int position;
 
     printf("   ");
     for (iterator1 = 0; iterator1 < board->columns; iterator1++) {
@@ -31,15 +30,14 @@ void print_board(struct minesweeper_board *board){
         printf("%d   ", iterator1);
 
         for (iterator2 = 0; iterator2 < board->columns; iterator2++) {
-            position = iterator1 * board->columns + iterator2;
 
-            if (board->visibility[position] == 1) {
-                if (board->base[position] >= 10) {
+            if (board->visibility[iterator1][iterator2] == 1) {
+                if (board->base[iterator1][iterator2] >= 10) {
                     printf("B ");
-                } else if (board->base[position] == 0) {
+                } else if (board->base[iterator1][iterator2] == 0) {
                     printf("  ");
                 } else {
-                    printf("%d ", board->base[position]);
+                    printf("%d ", board->base[iterator1][iterator2]);
                 }
             } else {
                 printf("%c ", 'H');
@@ -65,15 +63,12 @@ int reveal(struct minesweeper_board *board, int line, int col) {
      * -If it finds a bomb then it returns a "1" so that the program can terminate.
      */
 
-    int position;
-    position = line * board->columns + col;
-
-    if (board->visibility[position]) {
+    if (board->visibility[line][col]) {
         return 0;
     }
 
-    if (board->base[position] == 0) {
-        board->visibility[position] = 1;
+    if (board->base[line][col] == 0) {
+        board->visibility[line][col] = 1;
         board->open_squares++;
 
         if (line > 0) {
@@ -89,12 +84,12 @@ int reveal(struct minesweeper_board *board, int line, int col) {
             reveal(board, line, col + 1);
         }
 
-    } else if (board->base[position] >= 10) {
+    } else if (board->base[line][col] >= 10) {
         printf("You hit a bomb!\n");
-        board->visibility[position] = 1;
+        board->visibility[line][col] = 1;
         return 1;
     } else {
-        board->visibility[position] = 1;
+        board->visibility[line][col] = 1;
         board->open_squares++;
         return 0;
     }

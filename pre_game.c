@@ -24,15 +24,12 @@ void set_board(struct minesweeper_board *board, int start_line, int start_col) {
     int line_index;
     int col_index;
     int c_nr_bombs = 0;
-    int position;
 
     srand((unsigned) time(NULL));
 
     while (c_nr_bombs < board->nr_bombs) {
         line_index = rand() % board->lines;
         col_index = rand() % board->columns;
-
-        position = line_index * board->columns + col_index;
 
         if (start_col - 1 == col_index) {
             if (start_line - 1 == line_index) continue;
@@ -46,34 +43,34 @@ void set_board(struct minesweeper_board *board, int start_line, int start_col) {
             if (start_line - 1 == line_index) continue;
             else if (start_line == line_index) continue;
             else if (start_line + 1 == line_index) continue;
-        } else if (board->base[position] >= 10) {
+        } else if (board->base[line_index][col_index] >= 10) {
             continue;
         } else {
-            board->base[position] = 10;
+            board->base[line_index][col_index] = 10;
             c_nr_bombs++;
 
             if (line_index > 0) {
                 if (col_index > 0) {
-                    board->base[(line_index - 1) * board->columns + col_index - 1]++;
+                    board->base[line_index - 1][col_index - 1]++;
                 }
-                board->base[(line_index - 1) * board->columns + col_index]++;
+                board->base[line_index - 1][col_index]++;
                 if (col_index < board->columns - 1) {
-                    board->base[(line_index - 1) * board->columns + col_index + 1]++;
+                    board->base[line_index - 1][col_index + 1]++;
                 }
             }
             if (col_index > 0) {
-                board->base[(line_index) * board->columns + col_index - 1]++;
+                board->base[line_index][col_index - 1]++;
             }
             if (col_index < board->columns - 1) {
-                board->base[(line_index) * board->columns + col_index + 1]++;
+                board->base[line_index][col_index + 1]++;
             }
             if (line_index < board->lines - 1) {
                 if (col_index > 0) {
-                    board->base[(line_index + 1) * board->columns + col_index - 1]++;
+                    board->base[line_index + 1][col_index - 1]++;
                 }
-                board->base[(line_index + 1) * board->columns + col_index]++;
+                board->base[line_index + 1][col_index]++;
                 if (col_index < board->columns - 1) {
-                    board->base[(line_index + 1) * board->columns + col_index + 1]++;
+                    board->base[line_index + 1][col_index + 1]++;
                 }
             }
         }
