@@ -422,12 +422,10 @@ void solve_game(struct minesweeper_board *board) {
 
         if (solver->marked_squares != 0) {
             open_unmarked(board, solver);
-            printf("used mark here\n");
         } else {
             set_chances(board, solver);
             open_min(board, solver);
             print_board(board);
-            printf("used chances here\n");
         }
 
         if (board->open_squares == board->lines * board->columns - board->nr_bombs) {
@@ -442,4 +440,5 @@ void solve_game(struct minesweeper_board *board) {
     }
     free(solver->chance);
     free(solver->marked);
+    free(solver);
 }
