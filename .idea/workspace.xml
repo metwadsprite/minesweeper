@@ -11,12 +11,14 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9a326e02-0cc4-4e83-a117-cf1f06c406d8" name="Default" comment="added doxygen documentation.">
+    <list default="true" id="9a326e02-0cc4-4e83-a117-cf1f06c406d8" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/headers/solver.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/solver.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/headers/board.h" beforeDir="false" afterPath="$PROJECT_DIR$/headers/board.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/headers/in_game.h" beforeDir="false" afterPath="$PROJECT_DIR$/headers/in_game.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/in_game.c" beforeDir="false" afterPath="$PROJECT_DIR$/in_game.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/main.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pre_game.c" beforeDir="false" afterPath="$PROJECT_DIR$/pre_game.c" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -32,8 +34,8 @@
       <file leaf-file-name="main.c" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="544">
-              <caret line="32" column="72" selection-start-line="32" selection-start-column="72" selection-end-line="32" selection-end-column="72" />
+            <state>
+              <caret line="90" column="11" selection-start-line="90" selection-start-column="11" selection-end-line="90" selection-end-column="11" />
               <folding>
                 <element signature="e#161#179#0" expanded="true" />
               </folding>
@@ -44,8 +46,8 @@
       <file leaf-file-name="pre_game.c" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pre_game.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1190">
-              <caret line="72" column="65" selection-start-line="72" selection-start-column="65" selection-end-line="72" selection-end-column="65" />
+            <state>
+              <caret line="30" column="27" selection-start-line="30" selection-start-column="21" selection-end-line="30" selection-end-column="27" />
             </state>
           </provider>
         </entry>
@@ -53,8 +55,30 @@
       <file leaf-file-name="in_game.c" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/in_game.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1037">
-              <caret line="63" column="7" selection-start-line="63" selection-start-column="7" selection-end-line="63" selection-end-column="7" />
+            <state relative-caret-position="558">
+              <caret line="55" column="24" selection-start-line="55" selection-start-column="24" selection-end-line="55" selection-end-column="24" />
+              <folding>
+                <element signature="e#121#139#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="solver.c" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/solver.c">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="76">
+              <caret line="316" column="73" selection-start-line="316" selection-start-column="73" selection-end-line="316" selection-end-column="73" />
+              <folding>
+                <element signature="e#122#140#0" expanded="true" />
+                <element signature="e#218#303#1" />
+                <element signature="e#306#1486#0" />
+                <element signature="e#1488#3056#0" />
+                <element signature="e#3058#3827#0" />
+                <element signature="e#3829#4550#0" />
+                <element signature="e#4552#5698#0" />
+                <element signature="e#5700#8510#0" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -62,7 +86,7 @@
       <file leaf-file-name="pre_game.h" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/headers/pre_game.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
+            <state>
               <caret line="5" column="23" selection-start-line="5" selection-start-column="23" selection-end-line="5" selection-end-column="23" />
             </state>
           </provider>
@@ -71,17 +95,26 @@
       <file leaf-file-name="in_game.h" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/headers/in_game.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="14" selection-start-line="14" selection-end-line="14" />
+            <state>
+              <caret line="11" column="4" selection-start-line="11" selection-start-column="4" selection-end-line="11" selection-end-column="4" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="board.h" pinned="false" current-in-tab="true">
+      <file leaf-file-name="solver.h" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/headers/solver.h">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret line="8" column="49" selection-start-line="8" selection-start-column="49" selection-end-line="8" selection-end-column="49" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="board.h" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/headers/board.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="527">
-              <caret line="31" lean-forward="true" selection-start-line="31" selection-end-line="31" />
+            <state>
+              <caret line="26" column="41" selection-start-line="26" selection-start-column="41" selection-end-line="26" selection-end-column="41" />
             </state>
           </provider>
         </entry>
@@ -96,6 +129,12 @@
       <find>le_index</find>
       <find>col</find>
       <find>cols</find>
+      <find>adj_hidden_squares</find>
+      <find>iterator1</find>
+      <find>iterator2</find>
+      <find>square_prob</find>
+      <find>line</find>
+      <find>column</find>
     </findStrings>
     <replaceStrings>
       <replace>le</replace>
@@ -103,8 +142,13 @@
       <replace>cols</replace>
       <replace>col_index</replace>
       <replace>board_cols</replace>
-      <replace>column</replace>
       <replace>columns</replace>
+      <replace>aux</replace>
+      <replace>line</replace>
+      <replace>column</replace>
+      <replace>probability</replace>
+      <replace>iterator1</replace>
+      <replace>iterator2</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -117,11 +161,13 @@
         <option value="$PROJECT_DIR$/misc.c" />
         <option value="$PROJECT_DIR$/board.c" />
         <option value="$PROJECT_DIR$/headers/pre_game.h" />
-        <option value="$PROJECT_DIR$/headers/in_game.h" />
-        <option value="$PROJECT_DIR$/main.c" />
         <option value="$PROJECT_DIR$/pre_game.c" />
         <option value="$PROJECT_DIR$/headers/board.h" />
+        <option value="$PROJECT_DIR$/headers/in_game.h" />
+        <option value="$PROJECT_DIR$/headers/solver.h" />
         <option value="$PROJECT_DIR$/in_game.c" />
+        <option value="$PROJECT_DIR$/main.c" />
+        <option value="$PROJECT_DIR$/solver.c" />
       </list>
     </option>
   </component>
@@ -135,7 +181,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -152,12 +197,13 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../lab 9/CodeSkeleton Clion" />
-    <property name="settings.editor.selected.configurable" value="configurable.group.appearance" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -181,18 +227,17 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="0" width="1294" height="1087" extended-state="0" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.17918622" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.15649453" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Messages" order="7" weight="0.35082304" />
       <window_info anchor="bottom" id="CMake" order="7" />
-      <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.32921812" />
+      <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" weight="0.32921812" />
       <window_info anchor="bottom" id="Version Control" order="7" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.71399176" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
@@ -227,28 +272,16 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="clean-up" />
     <MESSAGE value="update #1" />
-    <option name="LAST_COMMIT_MESSAGE" value="update #1" />
+    <MESSAGE value="changed 2d array from single pointer to pointer to pointer." />
+    <MESSAGE value="small fix" />
+    <option name="LAST_COMMIT_MESSAGE" value="small fix" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="2" />
+      <option name="time" value="22" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/in_game.c">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1360">
-          <caret line="80" column="1" selection-start-line="80" selection-start-column="1" selection-end-line="80" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/headers/pre_game.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="79" selection-start-line="7" selection-start-column="79" selection-end-line="7" selection-end-column="79" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/headers/in_game.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
@@ -532,48 +565,75 @@
     <entry file="file://$PROJECT_DIR$/misc.c" />
     <entry file="file://$PROJECT_DIR$/headers/misc.h" />
     <entry file="file://$PROJECT_DIR$/board.c" />
-    <entry file="file://$PROJECT_DIR$/main.c">
+    <entry file="file://$PROJECT_DIR$/headers/board.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="544">
-          <caret line="32" column="72" selection-start-line="32" selection-start-column="72" selection-end-line="32" selection-end-column="72" />
-          <folding>
-            <element signature="e#161#179#0" expanded="true" />
-          </folding>
+        <state>
+          <caret line="26" column="41" selection-start-line="26" selection-start-column="41" selection-end-line="26" selection-end-column="41" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pre_game.c">
+    <entry file="file://$PROJECT_DIR$/headers/solver.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1190">
-          <caret line="72" column="65" selection-start-line="72" selection-start-column="65" selection-end-line="72" selection-end-column="65" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/in_game.c">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1037">
-          <caret line="63" column="7" selection-start-line="63" selection-start-column="7" selection-end-line="63" selection-end-column="7" />
+        <state>
+          <caret line="8" column="49" selection-start-line="8" selection-start-column="49" selection-end-line="8" selection-end-column="49" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/headers/pre_game.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
+        <state>
           <caret line="5" column="23" selection-start-line="5" selection-start-column="23" selection-end-line="5" selection-end-column="23" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/headers/in_game.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" selection-start-line="14" selection-end-line="14" />
+        <state>
+          <caret line="11" column="4" selection-start-line="11" selection-start-column="4" selection-end-line="11" selection-end-column="4" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/headers/board.h">
+    <entry file="file://$PROJECT_DIR$/pre_game.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="527">
-          <caret line="31" lean-forward="true" selection-start-line="31" selection-end-line="31" />
+        <state>
+          <caret line="30" column="27" selection-start-line="30" selection-start-column="21" selection-end-line="30" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret line="90" column="11" selection-start-line="90" selection-start-column="11" selection-end-line="90" selection-end-column="11" />
+          <folding>
+            <element signature="e#161#179#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/in_game.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="558">
+          <caret line="55" column="24" selection-start-line="55" selection-start-column="24" selection-end-line="55" selection-end-column="24" />
+          <folding>
+            <element signature="e#121#139#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/solver.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="76">
+          <caret line="316" column="73" selection-start-line="316" selection-start-column="73" selection-end-line="316" selection-end-column="73" />
+          <folding>
+            <element signature="e#122#140#0" expanded="true" />
+            <element signature="e#218#303#1" />
+            <element signature="e#306#1486#0" />
+            <element signature="e#1488#3056#0" />
+            <element signature="e#3058#3827#0" />
+            <element signature="e#3829#4550#0" />
+            <element signature="e#4552#5698#0" />
+            <element signature="e#5700#8510#0" />
+          </folding>
         </state>
       </provider>
     </entry>

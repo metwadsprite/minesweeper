@@ -9,9 +9,10 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include "headers/board.h"
 #include "headers/pre_game.h"
 #include "headers/in_game.h"
-#include "headers/board.h"
+#include "headers/solver.h"
 
 int main(void) {
     /**
@@ -56,9 +57,7 @@ int main(void) {
     }
 
     set_board(board, line, col);
-
-    board->bomb_hit = reveal(board, line, col);
-
+    reveal(board, line, col);
     print_board(board);
 
     if (board->open_squares == board->lines * board->columns - board->nr_bombs) {
@@ -66,29 +65,36 @@ int main(void) {
         return 0;
     }
 
-    while(board->bomb_hit == 0) {
-        printf("Give new set of coordinates:\n");
-        scanf("%d %d", &line, &col);
+    printf("Type 1 to play the game or 2 to solve it:\n");
+    int choice;
+    scanf("%d", &choice);
 
-        while (line >= board->lines || col >= board->columns || line < 0 || col < 0) {
-            printf("Invalid coordinates\nTry again:\n");
+    if (choice == 1) {
+        while(board->bomb_hit == 0) {
+            printf("Give new set of coordinates:\n");
             scanf("%d %d", &line, &col);
-        }
 
-        board->bomb_hit = reveal(board, line, col);
-        print_board(board);
+            while (line >= board->lines || col >= board->columns || line < 0 || col < 0) {
+                printf("Invalid coordinates\nTry again:\n");
+                scanf("%d %d", &line, &col);
+            }
 
-        if (board->open_squares == board->lines * board->columns - board->nr_bombs) {
-            printf("You won!\n");
-            break;
+            reveal(board, line, col);
+            print_board(board);
+
+            if (board->open_squares == board->lines * board->columns - board->nr_bombs) {
+                printf("You won!\n");
+                break;
+            }
         }
+    } else if (choice == 2) {
+        solve_game(board);
     }
 
     for (int iterator = 0; iterator < board->lines; iterator++) {
         free(board->base[iterator]);
         free(board->visibility[iterator]);
     }
-
     free(board->base);
     free(board->visibility);
     free(board);

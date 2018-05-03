@@ -9,6 +9,6 @@
 #define MINESWEEPER_IN_GAME_H
 
 void print_board(struct minesweeper_board *board);
-int reveal(struct minesweeper_board *board, int line, int col);
+void reveal(struct minesweeper_board *board, int line, int col);
 
 #endif //MINESWEEPER_IN_GAME_H

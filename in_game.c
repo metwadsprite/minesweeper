@@ -48,7 +48,7 @@ void print_board(struct minesweeper_board *board){
     }
 }
 
-int reveal(struct minesweeper_board *board, int line, int col) {
+void reveal(struct minesweeper_board *board, int line, int col) {
     /**
      * @fn int reveal(struct minesweeper_board *board, int line, int col)
      * @brief Opens a square.
@@ -64,7 +64,7 @@ int reveal(struct minesweeper_board *board, int line, int col) {
      */
 
     if (board->visibility[line][col]) {
-        return 0;
+        return;
     }
 
     if (board->base[line][col] == 0) {
@@ -73,9 +73,21 @@ int reveal(struct minesweeper_board *board, int line, int col) {
 
         if (line > 0) {
             reveal(board, line - 1, col);
+            if (col > 0) {
+                reveal(board, line - 1, col - 1);
+            }
+            if (col < board->columns - 1) {
+                reveal(board, line - 1, col + 1);
+            }
         }
         if (line < board->lines - 1) {
             reveal(board, line + 1, col);
+            if (col > 0) {
+                reveal(board, line + 1, col - 1);
+            }
+            if (col < board->columns - 1) {
+                reveal(board, line + 1, col + 1);
+            }
         }
         if (col > 0) {
             reveal(board, line, col - 1);
@@ -87,10 +99,9 @@ int reveal(struct minesweeper_board *board, int line, int col) {
     } else if (board->base[line][col] >= 10) {
         printf("You hit a bomb!\n");
         board->visibility[line][col] = 1;
-        return 1;
+        board->bomb_hit = 1;
     } else {
         board->visibility[line][col] = 1;
         board->open_squares++;
-        return 0;
     }
 }
