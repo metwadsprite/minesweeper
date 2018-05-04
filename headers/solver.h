@@ -1,6 +1,6 @@
 /**
  * @file solver.h
- * @brief
+ * @brief C library containing the main solver function.
  */
 
 #ifndef MINESWEEPER_SOLVER_H
