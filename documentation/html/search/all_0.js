@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['base',['base',['../structminesweeper__board.html#a4015213f1363674b898680b20e217b4e',1,'minesweeper_board']]],
-  ['board_2eh',['board.h',['../board_8h.html',1,'']]],
-  ['bomb_5fhit',['bomb_hit',['../structminesweeper__board.html#a2c40a627ea45cfa8525cc5b317c1f83a',1,'minesweeper_board']]]
+  ['adj_5fhidden_5fsquares',['adj_hidden_squares',['../solver__helper_8h.html#ac2d8a1987ab08745efa78c2c16b4471e',1,'solver_helper.c']]],
+  ['adj_5fmarked_5fsquares',['adj_marked_squares',['../solver__mark__method_8h.html#a293c3c28c65d3078c944e8749368c699',1,'solver_mark_method.c']]]
 ];

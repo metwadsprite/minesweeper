@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['reveal',['reveal',['../in__game_8h.html#a12007c2b8db9be7d2a7bb9f9565f2326',1,'in_game.c']]]
+  ['increment_5fchances',['increment_chances',['../solver__chance__method_8h.html#a40bef90424980aca013b928220035d64',1,'solver_chance_method.c']]]
 ];

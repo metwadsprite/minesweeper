@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['visibility',['visibility',['../structminesweeper__board.html#a9aa31cf01d87b195411e203bc26de0ee',1,'minesweeper_board']]]
+  ['open_5fsquares',['open_squares',['../structminesweeper__board.html#a86d53b2a9ee90fbdc7533bccdbc97725',1,'minesweeper_board']]]
 ];

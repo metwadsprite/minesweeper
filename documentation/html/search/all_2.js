@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['in_5fgame_2ec',['in_game.c',['../in__game_8c.html',1,'']]],
-  ['in_5fgame_2eh',['in_game.h',['../in__game_8h.html',1,'']]]
+  ['chance',['chance',['../structsolver__helper.html#ae5ae927b9e066fb073c5a5748a30625b',1,'solver_helper']]],
+  ['columns',['columns',['../structminesweeper__board.html#a341d2f00089fffc71eb6dbfd29f56c89',1,'minesweeper_board']]]
 ];

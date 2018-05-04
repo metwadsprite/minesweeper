@@ -24,7 +24,7 @@ for the JavaScript code in this file
 var NAVTREE =
 [
   [ "Minesweeper", "index.html", [
-    [ "minesweeper", "md__r_e_a_d_m_e.html", null ],
+    [ "minesweeper", "md__f_1__g_i_t_minesweeper__r_e_a_d_m_e.html", null ],
     [ "Data Structures", "annotated.html", [
       [ "Data Structures", "annotated.html", "annotated_dup" ],
       [ "Data Structure Index", "classes.html", null ],
