@@ -104,11 +104,55 @@ Functions</h2></td></tr>
 <tr class="separator:a57b0fdcb39b0393d6b8d00209b89157e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a025943b768375e0f1070592f047a6dd1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="in__game_8h.html#a025943b768375e0f1070592f047a6dd1">reveal</a> (struct <a class="el" href="structminesweeper__board.html">minesweeper_board</a> *board, int line, int col)</td></tr>
 <tr class="separator:a025943b768375e0f1070592f047a6dd1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acadc14bc7eb64c41c3c99ce4e229f456"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="in__game_8h.html#acadc14bc7eb64c41c3c99ce4e229f456">flag</a> (struct <a class="el" href="structminesweeper__board.html">minesweeper_board</a> *board, int line, int column)</td></tr>
+<tr class="separator:acadc14bc7eb64c41c3c99ce4e229f456"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>C library for actions used during the game. </p>
 <p>Implements printing the board and opening a square. </p>
 </div><h2 class="groupheader">Function Documentation</h2>
+<a id="acadc14bc7eb64c41c3c99ce4e229f456"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acadc14bc7eb64c41c3c99ce4e229f456">&#9670;&nbsp;</a></span>flag()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void flag </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="structminesweeper__board.html">minesweeper_board</a> *&#160;</td>
+          <td class="paramname"><em>board</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>line</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>column</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Places/Removes a flag on a square. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">*board</td><td>The board itself. </td></tr>
+    <tr><td class="paramname">line</td><td>The first coordinate of the square. </td></tr>
+    <tr><td class="paramname">column</td><td>The second coordinate of the square.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a id="a57b0fdcb39b0393d6b8d00209b89157e"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a57b0fdcb39b0393d6b8d00209b89157e">&#9670;&nbsp;</a></span>print_board()</h2>
 

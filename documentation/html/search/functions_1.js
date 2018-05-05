@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['increment_5fchances',['increment_chances',['../solver__chance__method_8h.html#a40bef90424980aca013b928220035d64',1,'solver_chance_method.c']]]
+  ['flag',['flag',['../in__game_8h.html#acadc14bc7eb64c41c3c99ce4e229f456',1,'in_game.c']]]
 ];
