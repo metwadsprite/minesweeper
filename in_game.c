@@ -20,15 +20,7 @@ void print_board(struct minesweeper_board *board){
     int iterator1;
     int iterator2;
 
-    printf("   ");
-    for (iterator1 = 0; iterator1 < board->columns; iterator1++) {
-        printf(" %d", iterator1);
-    }
-    printf("\n\n");
-
     for (iterator1 = 0; iterator1 < board->lines; iterator1++) {
-        printf("%d   ", iterator1);
-
         for (iterator2 = 0; iterator2 < board->columns; iterator2++) {
 
             if (board->visibility[iterator1][iterator2] == 1) {
@@ -39,6 +31,8 @@ void print_board(struct minesweeper_board *board){
                 } else {
                     printf("%d ", board->base[iterator1][iterator2]);
                 }
+            } else if (board->visibility[iterator1][iterator2] == 2) {
+                printf("F ");
             } else {
                 printf("%c ", 'H');
             }
@@ -64,6 +58,9 @@ void reveal(struct minesweeper_board *board, int line, int col) {
      */
 
     if (board->visibility[line][col]) {
+        return;
+    }
+    if (board->visibility[line][col] == 2) {
         return;
     }
 
@@ -104,4 +101,24 @@ void reveal(struct minesweeper_board *board, int line, int col) {
         board->visibility[line][col] = 1;
         board->open_squares++;
     }
+}
+
+void flag(struct minesweeper_board *board, int line, int column) {
+    /**
+     * @fn void flag(struct minesweeper_board *board, int line, int column)
+     * @brief Places/Removes a flag on a square.
+     * @param *board The board itself.
+     * @param line The first coordinate of the square.
+     * @param column The second coordinate of the square.
+     */
+
+    if (board->visibility[line][column] == 1) {
+        printf("Cant place flag on an open square!\n");
+        return;
+    }
+    if (board->visibility[line][column] == 2) {
+        board->visibility[line][column] = 1;
+    }
+
+    board->visibility[line][column] = 2;
 }

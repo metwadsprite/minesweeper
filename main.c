@@ -24,6 +24,9 @@ int main(void) {
     int line;
     int col;
 
+    int choice1;
+    int choice2;
+
     struct minesweeper_board *board;
     board = malloc((size_t) sizeof(struct minesweeper_board));
 
@@ -66,11 +69,13 @@ int main(void) {
     }
 
     printf("Type 1 to play the game or 2 to solve it:\n");
-    int choice;
-    scanf("%d", &choice);
+    scanf("%d", &choice1);
 
-    if (choice == 1) {
+    if (choice1 == 1) {
         while(board->bomb_hit == 0) {
+            printf("Type 1 to open a square and 2 to flag it:\n");
+            scanf("%d", &choice2);
+
             printf("Give new set of coordinates:\n");
             scanf("%d %d", &line, &col);
 
@@ -79,15 +84,20 @@ int main(void) {
                 scanf("%d %d", &line, &col);
             }
 
-            reveal(board, line, col);
-            print_board(board);
+            if (choice2 == 1) {
+                reveal(board, line, col);
+                print_board(board);
+            } else if (choice2 == 2) {
+                flag(board, line, col);
+                print_board(board);
+            }
 
             if (board->open_squares == board->lines * board->columns - board->nr_bombs) {
                 printf("You won!\n");
                 break;
             }
         }
-    } else if (choice == 2) {
+    } else if (choice1 == 2) {
         solve_game(board);
     }
 
