@@ -42,63 +42,60 @@ void print_board(struct minesweeper_board *board){
     }
 }
 
-void reveal(struct minesweeper_board *board, int line, int col) {
+void reveal(struct minesweeper_board *board, int line, int column) {
     /**
-     * @fn int reveal(struct minesweeper_board *board, int line, int col)
+     * @fn void reveal(struct minesweeper_board *board, int line, int col)
      * @brief Opens a square.
      * @param *board The board and all it's details contained in a struct.
      * @param line The line on which the square to be opened is located.
-     * @param col The column on which the square to be opened is located.
+     * @param column The column on which the square to be opened is located.
      *
-     * The function opens the square on the given coordinates and returns a number
-     * based on what is underneath it:
-     * -If it finds nothing then it calls itself for all adjecant squares.
-     * -If it finds a number it returns a "0".
-     * -If it finds a bomb then it returns a "1" so that the program can terminate.
+     * The function opens the square on the given coordinates. If the number on the square
+     * is "0" the function calls itself on all adjancet squares.
      */
 
-    if (board->visibility[line][col]) {
+    if (board->visibility[line][column]) {
         return;
     }
-    if (board->visibility[line][col] == 2) {
+    if (board->visibility[line][column] == 2) {
         return;
     }
 
-    if (board->base[line][col] == 0) {
-        board->visibility[line][col] = 1;
+    if (board->base[line][column] == 0) {
+        board->visibility[line][column] = 1;
         board->open_squares++;
 
         if (line > 0) {
-            reveal(board, line - 1, col);
-            if (col > 0) {
-                reveal(board, line - 1, col - 1);
+            reveal(board, line - 1, column);
+            if (column > 0) {
+                reveal(board, line - 1, column - 1);
             }
-            if (col < board->columns - 1) {
-                reveal(board, line - 1, col + 1);
+            if (column < board->columns - 1) {
+                reveal(board, line - 1, column + 1);
             }
         }
         if (line < board->lines - 1) {
-            reveal(board, line + 1, col);
-            if (col > 0) {
-                reveal(board, line + 1, col - 1);
+            reveal(board, line + 1, column);
+            if (column > 0) {
+                reveal(board, line + 1, column - 1);
             }
-            if (col < board->columns - 1) {
-                reveal(board, line + 1, col + 1);
+            if (column < board->columns - 1) {
+                reveal(board, line + 1, column + 1);
             }
         }
-        if (col > 0) {
-            reveal(board, line, col - 1);
+        if (column > 0) {
+            reveal(board, line, column - 1);
         }
-        if (col < board->columns - 1) {
-            reveal(board, line, col + 1);
+        if (column < board->columns - 1) {
+            reveal(board, line, column + 1);
         }
 
-    } else if (board->base[line][col] >= 10) {
+    } else if (board->base[line][column] >= 10) {
         printf("You hit a bomb!\n");
-        board->visibility[line][col] = 1;
+        board->visibility[line][column] = 1;
         board->bomb_hit = 1;
     } else {
-        board->visibility[line][col] = 1;
+        board->visibility[line][column] = 1;
         board->open_squares++;
     }
 }
