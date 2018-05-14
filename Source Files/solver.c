@@ -57,11 +57,5 @@ void solve_game(struct minesweeper_board *board) {
         }
     }
 
-    for (int iterator = 0; iterator < board->lines; iterator++) {
-        free(solver->chance[iterator]);
-        free(solver->marked[iterator]);
-    }
-    free(solver->chance);
-    free(solver->marked);
     free(solver);
 }

@@ -101,12 +101,6 @@ int main(void) {
         solve_game(board);
     }
 
-    for (int iterator = 0; iterator < board->lines; iterator++) {
-        free(board->base[iterator]);
-        free(board->visibility[iterator]);
-    }
-    free(board->base);
-    free(board->visibility);
     free(board);
     return 0;
 }
