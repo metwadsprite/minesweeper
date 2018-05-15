@@ -9,10 +9,10 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include "../Header Files/board.h"
-#include "../Header Files/pre_game.h"
-#include "../Header Files/in_game.h"
-#include "../Header Files/solver.h"
+#include "../headers/board.h"
+#include "../headers/pre_game.h"
+#include "../headers/in_game.h"
+#include "../headers/solver.h"
 
 int main(void) {
     /**

@@ -6,11 +6,11 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include "../Header Files/board.h"
-#include "../Header Files/in_game.h"
-#include "../Header Files/solver_mark_method.h"
-#include "../Header Files/solver_chance_method.h"
-#include "../Header Files/solver_helper.h"
+#include "../headers/board.h"
+#include "../headers/in_game.h"
+#include "../headers/solver_helper.h"
+#include "../headers/solver_mark_method.h"
+#include "../headers/solver_chance_method.h"
 
 void solve_game(struct minesweeper_board *board) {
     /**

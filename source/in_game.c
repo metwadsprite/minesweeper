@@ -6,7 +6,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include "../Header Files/board.h"
+#include "../headers/board.h"
 
 void print_board(struct minesweeper_board *board){
     /**

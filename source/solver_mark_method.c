@@ -5,9 +5,9 @@
  */
 
 #include <stdio.h>
-#include "../Header Files/board.h"
-#include "../Header Files/in_game.h"
-#include "../Header Files/solver_helper.h"
+#include "../headers/board.h"
+#include "../headers/in_game.h"
+#include "../headers/solver_helper.h"
 
 int adj_marked_squares(struct minesweeper_board *board, int line, int column, struct solver_helper *solver) {
     /**

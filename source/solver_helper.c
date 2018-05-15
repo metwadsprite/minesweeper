@@ -4,7 +4,7 @@
  * @author Vasilescu Vlad
  */
 
-#include "../Header Files/board.h"
+#include "../headers/board.h"
 
 int adj_hidden_squares(struct minesweeper_board *board, int line, int column) {
     /**

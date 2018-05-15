@@ -6,7 +6,7 @@
 
 #include <stdlib.h>
 #include <time.h>
-#include "../Header Files/board.h"
+#include "../headers/board.h"
 
 void set_board(struct minesweeper_board *board, int start_line, int start_col) {
     /**
