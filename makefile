@@ -4,7 +4,7 @@ TARGET = minesweeper
 all: build
 
 build:
-	gcc $(FILES) -o $(TARGET)
+	gcc $(FILES) -o $(TARGET) -std=c99
 
 clean:
 	rm $(TARGET)
