@@ -1,0 +1,214 @@
+\documentclass{report}
+\usepackage[utf8]{inputenc}
+
+\title{Minesweeper - game and solver implementation}
+\author{Vlad Vasilescu \\ CEN 1.3B (Ragnar)}
+\date{Year 2017 - 2018 \\ Semester II}
+
+\usepackage{natbib}
+\usepackage{graphicx}
+\usepackage{algorithm2e}
+
+\begin{document}
+
+\begin{titlepage}
+\maketitle
+\end{titlepage}
+
+\chapter*{Problem Statement:}
+Minesweeper is a single-player puzzle video game. The objective of the game is to clear a rectangular board containing hidden "mines"
+or bombs without detonating any of them, with help from clues about number of neighboring mines in each cell.
+
+What I did was implement both the game itself aswell as a solver for it. The player can chose between playing the game or running the
+solver.
+
+\chapter*{Application Design:}
+The game uses a number of functions that have been placed into libraries that represent the process they are used for:
+\begin{itemize}
+    \item Functions used in generating the board.
+    \item Functions used while playing the game.
+    \item Functions used by the solver.
+\end{itemize}
+
+\section*{Generating the board:}
+The first set of numbers the player has to give as input is the board length, height and the number of bombs, and also the coordinates for the
+first square to be opened. This is to prevent generating an unsolvable board.
+
+\subsection*{The board as a data type:}
+The board is defined as a custom data type which stores board length, height, number of bombs, number of open squares, whether the bomb has been
+hit or not and 2 matrices which store the bomb positions and the visiblity of the cells.
+
+Pseudocode algorithm:
+
+\begin{algorithm}[H]
+    \KwData{The board and starting coordinates.}
+    \KwResult{The generated board.}
+    \While{there are still bombs to place} {
+        generate random set of coordinates for bomb\;
+        \eIf{bomb is adjecant or on starting coordinates} {
+            generate new set of coordinates for bomb\;
+        }{
+            place bomb and increase the value of all adjacent cells by one\;
+        }
+    }
+    \caption{Setting up the board.}
+\end{algorithm}
+
+\section*{Playing the game:}
+Playing the game consists of 3 functions that are ran inside a loop until a cell containing a bomb has been opened or when all cells except those
+containing bombs have been opened:
+\begin{itemize}
+    \item Function that prints the board.\\
+    Simply takes the board as input and prints a cell value to standard output only if it's visible.
+    \item Function that reveals a square.\\
+    Takes the board and 2 coordinates as input and reveals the square on that position. If the value on cell is "0" then the function calls
+    itself for all adjacent cells. If the cell opened is a bomb it stores that a bomb has been hit so the game can stop.
+    \item Function that flags a square.\\
+    Just like the "reveal" function, takes as input the board and 2 coordinates but this time it places/removes a flag from the given position.
+    If there is no flag it places one otherwise it removes the already placed flag.
+\end{itemize}
+
+Pseudecode algorithms for the three functions:
+
+\begin{algorithm}[H]
+    \KwData{The board}
+    \KwResult{Prints the board to standard output}
+    \ForAll{cells in board}{
+        \eIf{cell is visible}{
+            print cell value\;
+        }{
+            print a hidden cell\;
+        }
+    }
+    \caption{Printing the board.}
+\end{algorithm}
+
+\begin{algorithm}[H]
+    \KwData{The board and coordinates for the cell to be opened}
+    \KwResult{Changes the visibility of the cell}
+    \eIf{cell is not visible}{
+        make the cell visible\;
+        \eIf{cell is bomb}{
+            store that bomb has been hit\;
+        }{
+            \eIf{cell is "0"}{
+                call this function for all adjance cells\;
+            }{
+                \Return
+            }
+        }
+    }{
+        \Return
+    }
+    \caption{Reveals a cell.}
+\end{algorithm}
+
+\begin{algorithm}[H]
+    \KwData{The board and cooridnates for the cell to be flaged}
+    \KwResult{Changes the visility of the cell}
+    \eIf{cell is not visible \& cell is not flagged}{
+        flag the cell\;
+    }{
+        remove flag from the cell\;
+    }
+    \caption{Places/Removes flag from a cell.}
+\end{algorithm}
+
+\section*{Solving the game:}
+The solver uses 2 methods each with it's own library of functions all called from the main solver function.
+
+\subsection*{The "solver helper" as data type:}
+The "solver helper" is custom data type that contains the number of squares that have been marked on each step aswell as two matrices:
+one for storing the marked cells and one for the chances.
+
+\subsection*{The "marking" method:}
+The marking method is the main method for solving as you can always be sure that the cell it opens is guaranteed to not be a bomb. The way this works
+is that it first finds every cell that has the same number of adjancet hidden squares as the number on the cell. On the second pass it checks if
+any cell is "satisfied" (has the same number of marked cells around it as the number on cell) and opens all un-marked hidden cells around it.\\
+There are three functions used by this method:
+\begin{itemize}
+    \item The first one returns the number of adjacent marked cells.
+    \item The second function marks the squares on the board.
+    \item The third function opens up all the unmarked cells around a satisfied one.
+\end{itemize}
+
+\begin{algorithm}[H]
+    \KwData{The board and the solver helper}
+    \KwResult{Marks all eligible squares on the board}
+    \ForAll{cells in board}{
+        \If{adjacent hidden squares = number on the cell}{
+            mark all adjacent hidden squares\;
+        }
+    }
+    \caption{Function that marks cells.}
+\end{algorithm}
+
+\begin{algorithm}
+    \KwData{The board and the solver helper}
+    \KwResult{Opens the unmarked hidden cells around a satisfied square}
+    \ForAll{cells in board}{
+        \If{adjacent marked cells = number on the cell}{
+            open all unmarked hidden adjacent cells\;
+        }
+    }
+    \caption{Opens all the cells know to not be bombs.}
+\end{algorithm}
+
+\subsection*{The "chances" method:}
+This method is only used when marking one hasn't managed to mark any cell which means it's not 100\% reliable. The way it works is by finding each
+cell that is visible and has at least one hidden cell adjacent to it and adding the number on the cell divided by the number of hidden cells around
+it to each hidden cell (each hiddden cell starts at 0).
+
+\begin{algorithm}
+    \KwData{The board and the solver helper}
+    \KwResult{Set the chances matrix}
+    \ForAll{cells in board}{
+        \If{number of adjacent hidden cells $\neq$ 0}{
+            \ForAll{adjacent hidden cells}{
+                adjacent hidden cell := cell / number of adjacent hidden cells\;
+            }
+        }
+    }
+    \caption{Setting the chances for the entire board.}
+\end{algorithm}
+
+The second function just reveals the cell with the lowest chance.
+
+\section*{Generating test data:}
+Generating test data for the solver is really easy becauase the solver uses the board generated by the same functions that are used
+for making a playing a board. The player just selects whether he wants to play or use the solver on the board after the first set of input
+data is given. As for generating the board no matter how big the board is it's only gonna require 5 numbers for the size, the nr. of bombs
+and the first set of coordinates.
+
+\chapter*{Conclusions:}
+\section*{Summary of achievements:}
+\subsection*{}
+My main two goals that I managed to achieve while working on this project are:
+First of all creating a playable and solvabale board where the player cant hit a bomb or a number cell on the first try. This was done by generating 
+the board after the first set of coorinates is given by the player and not allowing bombs to be placed on or adjacent to
+that posititon.
+\subsection*{}
+And secondly implementing a semi-reliable solving algorithm. This was by far the hardest task because I used no outsde sources
+and came up with the 2 methods used myself. The solver is not guaranteed to work reliably because of the way the game works. When the number
+of bombs is close to the number of total cells on the board the chances of encountering a 33\% or even a 50\% probability of a cell being a bomb go up.
+
+\section*{Future of the project:}
+As of now I plan on making the playing side of the game as user friendly as possible by adding some more key features and increasing
+the visibily of the board on the screen when dealing with a large number of lines and columns.
+
+\begin{thebibliography}{9}
+\bibitem{wikipedia}
+Minesweeper (Video Game)
+\\\texttt{https://goo.gl/QUjRbT}
+
+\bibitem{stackoverflow}
+Stack Overflow
+\\\texttt{https://stackoverflow.com/}
+
+\bibitem{mcsminesweeper}
+Microsoft Minesweeper
+\\\texttt{https://goo.gl/75w3oT}
+
+\end{thebibliography}
+
+\end{document}
