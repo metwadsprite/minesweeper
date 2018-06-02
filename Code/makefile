@@ -1,4 +1,4 @@
-FILES = Code/source/main.c Code/source/in_game.c Code/source/pre_game.c Code/source/solver.c Code/source/solver_chance_method.c Code/source/solver_helper.c Code/source/solver_mark_method.c
+FILES = source/main.c source/in_game.c source/pre_game.c source/solver.c source/solver_chance_method.c source/solver_helper.c source/solver_mark_method.c
 TARGET = minesweeper
 
 all: build
