@@ -48,11 +48,11 @@ void solve_game(struct minesweeper_board *board) {
         } else {
             set_chances(board, solver);
             open_min(board, solver);
-            print_board(board);
         }
 
         if (board->open_squares == board->lines * board->columns - board->nr_bombs) {
             printf("Solver succeeded!\n");
+            print_board(board);
             break;
         }
     }

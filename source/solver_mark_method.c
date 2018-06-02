@@ -207,7 +207,6 @@ void open_unmarked(struct minesweeper_board *board, struct solver_helper *solver
 
                         printf("Opened square at (%d, %d)\n", iterator1 - 1, iterator2 - 1);
                         reveal(board, iterator1 - 1, iterator2 - 1);
-                        print_board(board);
                     }
                 }
                 if (board->visibility[iterator1 - 1][iterator2] == 0 &&
@@ -215,7 +214,6 @@ void open_unmarked(struct minesweeper_board *board, struct solver_helper *solver
 
                     printf("Opened square at (%d, %d)\n", iterator1 - 1, iterator2);
                     reveal(board, iterator1 - 1, iterator2);
-                    print_board(board);
                 }
                 if (iterator2 < board->columns - 1) {
                     if (board->visibility[iterator1 - 1][iterator2 + 1] == 0 &&
@@ -223,7 +221,6 @@ void open_unmarked(struct minesweeper_board *board, struct solver_helper *solver
 
                         printf("Opened square at (%d, %d)\n", iterator1 - 1, iterator2 + 1);
                         reveal(board, iterator1 - 1, iterator2 + 1);
-                        print_board(board);
                     }
                 }
             }
@@ -234,7 +231,6 @@ void open_unmarked(struct minesweeper_board *board, struct solver_helper *solver
 
                     printf("Opened square at (%d, %d)\n", iterator1, iterator2 - 1);
                     reveal(board, iterator1, iterator2 - 1);
-                    print_board(board);
                 }
             }
             if (iterator2 < board->columns - 1) {
@@ -243,7 +239,6 @@ void open_unmarked(struct minesweeper_board *board, struct solver_helper *solver
 
                     printf("Opened square at (%d, %d)\n", iterator1, iterator2 + 1);
                     reveal(board, iterator1, iterator2 + 1);
-                    print_board(board);
                 }
             }
 
@@ -254,7 +249,6 @@ void open_unmarked(struct minesweeper_board *board, struct solver_helper *solver
 
                         printf("Opened square at (%d, %d)\n", iterator1 + 1, iterator2 - 1);
                         reveal(board, iterator1 + 1, iterator2 - 1);
-                        print_board(board);
                     }
                 }
                 if (board->visibility[iterator1 + 1][iterator2] == 0 &&
@@ -262,7 +256,6 @@ void open_unmarked(struct minesweeper_board *board, struct solver_helper *solver
 
                     printf("Opened square at (%d, %d)\n", iterator1 + 1, iterator2);
                     reveal(board, iterator1 + 1, iterator2);
-                    print_board(board);
                 }
                 if (iterator2 < board->columns - 1) {
                     if (board->visibility[iterator1 + 1][iterator2 + 1] == 0 &&
@@ -270,7 +263,6 @@ void open_unmarked(struct minesweeper_board *board, struct solver_helper *solver
 
                         printf("Opened square at (%d, %d)\n", iterator1 + 1, iterator2 + 1);
                         reveal(board, iterator1 + 1, iterator2 + 1);
-                        print_board(board);
                     }
                 }
             }
