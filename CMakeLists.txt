@@ -3,4 +3,4 @@ project(minesweeper C)
 
 set(CMAKE_C_STANDARD 99)
 
-add_executable(minesweeper "source/main.c" "source/pre_game.c" "headers/pre_game.h" "source/in_game.c" "headers/in_game.h" "headers/board.h" "source/solver.c" "headers/solver.h" "source/solver_mark_method.c" "headers/solver_mark_method.h" "source/solver_chance_method.c" "headers/solver_chance_method.h" "source/solver_helper.c" "headers/solver_helper.h")
+add_executable(minesweeper "Code/source/main.c" "Code/source/pre_game.c" "Code/headers/pre_game.h" "Code/source/in_game.c" "Code/headers/in_game.h" "Code/headers/board.h" "Code/source/solver.c" "Code/headers/solver.h" "Code/source/solver_mark_method.c" "Code/headers/solver_mark_method.h" "Code/source/solver_chance_method.c" "Code/headers/solver_chance_method.h" "Code/source/solver_helper.c" "Code/headers/solver_helper.h")

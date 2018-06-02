@@ -1,0 +1,3 @@
+F:/GIT/minesweeper/minesweeper/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+F:/GIT/minesweeper/minesweeper/cmake-build-debug/CMakeFiles/minesweeper.dir
+F:/GIT/minesweeper/minesweeper/cmake-build-debug/CMakeFiles/edit_cache.dir
