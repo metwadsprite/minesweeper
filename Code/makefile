@@ -7,4 +7,4 @@ build:
 	gcc $(FILES) -o $(TARGET) -std=c99
 
 clean:
-	rm $(TARGET)
+	del $(TARGET).exe
